@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:lotto_number_generator/pages/home_page.dart';
+import 'package:lotto_number_generator/pages/about_app_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: AboutAppPage(),
     );
   }
 }

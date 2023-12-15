@@ -1,26 +1,18 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/material.dart';
 import '../pages/642.dart';
 import '../pages/645.dart';
 import '../pages/649.dart';
 import '../pages/655.dart';
 import '../pages/658.dart';
-import '../pages/home_page.dart';
+import '../pages/about_app_page.dart';
 
 class MyNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
       children: [
-        ListTile(
-          leading: Icon(Icons.home),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
-        ),
         const SizedBox(height: 20),
         ListTile(
           leading: Image.asset(
@@ -128,6 +120,29 @@ class MyNavBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Page658()),
+            );
+          },
+        ),
+        Divider(
+          thickness: 1,
+          indent: 10,
+          endIndent: 10,
+          color: Colors.grey[700],
+        ),
+        ListTile(
+          title: Text(
+            'About App',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
+          leading: Icon(Icons.info_outline_rounded),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AboutAppPage()),
             );
           },
         ),

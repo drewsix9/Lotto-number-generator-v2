@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../widgets/myAppBar.dart';
 import '../widgets/myNavDrawer.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AboutAppPage extends StatefulWidget {
+  const AboutAppPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AboutAppPage> createState() => _AboutAppPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AboutAppPageState extends State<AboutAppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
