@@ -8,7 +8,6 @@ import '../pages/658.dart';
 import '../pages/home_page.dart';
 
 class MyNavBar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
@@ -24,12 +23,19 @@ class MyNavBar extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ListTile(
-          leading: Image.asset('assets/images/642.png',width: 50,height: 50,),
-          title: Text('Lotto 6/42',style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[700],
-          ),),
+          leading: Image.asset(
+            'assets/images/642.png',
+            width: 50,
+            height: 50,
+          ),
+          title: Text(
+            'Lotto 6/42',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -39,12 +45,19 @@ class MyNavBar extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ListTile(
-          leading: Image.asset('assets/images/645.png',width: 50,height: 50,),
-          title: Text('Mega Lotto 6/45',style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[700],
-          ),),
+          leading: Image.asset(
+            'assets/images/645.png',
+            width: 50,
+            height: 50,
+          ),
+          title: Text(
+            'Mega Lotto 6/45',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -54,12 +67,19 @@ class MyNavBar extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ListTile(
-          leading: Image.asset('assets/images/649.png',width: 50,height: 50,),
-          title: Text('Super Lotto 6/49',style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[700],
-          ),),
+          leading: Image.asset(
+            'assets/images/649.png',
+            width: 50,
+            height: 50,
+          ),
+          title: Text(
+            'Super Lotto 6/49',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -69,12 +89,19 @@ class MyNavBar extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ListTile(
-          leading: Image.asset('assets/images/655.png',width: 50,height: 50,),
-          title: Text('Grand Lotto 6/55',style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[700],
-          ),),
+          leading: Image.asset(
+            'assets/images/655.png',
+            width: 50,
+            height: 50,
+          ),
+          title: Text(
+            'Grand Lotto 6/55',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,
@@ -84,12 +111,19 @@ class MyNavBar extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         ListTile(
-          leading: Image.asset('assets/images/658.png',width: 50,height: 50,),
-          title: Text('Ultra Lotto 6/58',style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey[700],
-          ),),
+          leading: Image.asset(
+            'assets/images/658.png',
+            width: 50,
+            height: 50,
+          ),
+          title: Text(
+            'Ultra Lotto 6/58',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+          ),
           onTap: () {
             Navigator.push(
               context,

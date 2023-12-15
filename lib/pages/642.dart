@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:lotto_number_generator/widgets/myNavDrawer.dart';
-import '../utils/models/generatedNumberModel.dart';
+import '../utils/models/generatedNumber.dart';
 
 class Page642 extends StatefulWidget {
   const Page642({super.key});
@@ -23,36 +25,62 @@ class _Page642State extends State<Page642> {
       drawer: MyNavBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center ,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: EdgeInsets.all(20),
               child: Image.asset('assets/images/642.png', width: 200),
             ),
-            ElevatedButton(onPressed: () {
-              setState(() {
-                randomNumbers.generateNumbers(42);
-                randomNumbers.printNumbers();
-              });
-            }, child: Text('Generate Number')),
             Container(
               padding: EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(randomNumbers.number1.toString()),
-                  const SizedBox(width: 10),
-                  Text(randomNumbers.number2.toString()),
-                  const SizedBox(width: 10),
-                  Text(randomNumbers.number3.toString()),
-                  const SizedBox(width: 10),
-                  Text(randomNumbers.number4.toString()),
-                  const SizedBox(width: 10),
-                  Text(randomNumbers.number5.toString()),
-                  const SizedBox(width: 10),
-                  Text(randomNumbers.number6.toString()),
+                  // create a builder widget for the 6 numbers
+                  Row(
+                    children: [
+                      for (var i = 0; i < 6; i++)
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              randomNumbers.numbers[i],
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  )
                 ],
               ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.redAccent,
+                onPrimary: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  randomNumbers.generateNumbers(42);
+                });
+              },
+              child: Text('Generate Number',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             ),
           ],
         ),

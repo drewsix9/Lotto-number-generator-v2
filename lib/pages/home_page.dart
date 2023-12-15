@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         drawer: MyNavBar(),
         appBar: AppBar(
-          backgroundColor: Colors.deepPurple[200],
+          backgroundColor: Colors.redAccent,
           foregroundColor: Colors.white,
           title: Center(child: Text('Lotto Number Generator')),
         ),
