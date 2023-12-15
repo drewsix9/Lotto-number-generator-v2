@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../widgets/myAppBar.dart';
 import '../widgets/myNavDrawer.dart';
 import '../utils/models/generatedNumber.dart';
+import '../widgets/myNumbersBuilder.dart';
 
 class Page655 extends StatefulWidget {
   const Page655({super.key});
@@ -15,11 +17,7 @@ class _Page655State extends State<Page655> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        foregroundColor: Colors.white,
-        title: Center(child: Text('Lotto 6/55 Number Generator')),
-      ),
+      appBar: myAppBar('Lotto 6/55'),
       drawer: MyNavBar(),
       body: Center(
         child: Column(
@@ -35,32 +33,7 @@ class _Page655State extends State<Page655> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // create a builder widget for the 6 numbers
-                  Row(
-                    children: [
-                      for (var i = 0; i < 6; i++)
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              randomNumbers.numbers[i],
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  )
+                  buildNumberWidgets(randomNumbers.numbers),
                 ],
               ),
             ),

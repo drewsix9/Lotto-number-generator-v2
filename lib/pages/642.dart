@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:lotto_number_generator/widgets/myNavDrawer.dart';
 import '../utils/models/generatedNumber.dart';
+import '../widgets/myAppBar.dart';
+import '../widgets/myNavDrawer.dart';
+import '../widgets/myNumbersBuilder.dart';
 
 class Page642 extends StatefulWidget {
   const Page642({super.key});
@@ -17,11 +19,7 @@ class _Page642State extends State<Page642> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        foregroundColor: Colors.white,
-        title: Center(child: Text('Lotto 6/42 Number Generator')),
-      ),
+      appBar: myAppBar('Lotto 6/42'),
       drawer: MyNavBar(),
       body: Center(
         child: Column(
@@ -37,32 +35,7 @@ class _Page642State extends State<Page642> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // create a builder widget for the 6 numbers
-                  Row(
-                    children: [
-                      for (var i = 0; i < 6; i++)
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              randomNumbers.numbers[i],
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  )
+                  buildNumberWidgets(randomNumbers.numbers),
                 ],
               ),
             ),

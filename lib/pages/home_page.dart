@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/myAppBar.dart';
 import '../widgets/myNavDrawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,11 +14,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: MyNavBar(),
-        appBar: AppBar(
-          backgroundColor: Colors.redAccent,
-          foregroundColor: Colors.white,
-          title: Center(child: Text('Lotto Number Generator')),
-        ),
+        appBar: myAppBar('Lotto Number Generator'),
         body: Center(
           child: Text('Home Page'),
         ));
