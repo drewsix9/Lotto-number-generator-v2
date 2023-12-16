@@ -28,7 +28,8 @@ class _AboutAppPageState extends State<AboutAppPage> {
             ),
             SizedBox(height: 16),
             Text(
-              'Lotto Number Generator is designed to help lottery enthusiasts generate random numbers for their Lotto 6/42 games. With a simple and intuitive interface, generating lottery numbers has never been easier.',
+              'Lotto Number Generator is designed to help lottery enthusiasts generate random numbers for their Lotto games. With a simple and intuitive interface, generating lottery numbers has never been easier.',
+              textAlign: TextAlign.justify,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
@@ -39,19 +40,20 @@ class _AboutAppPageState extends State<AboutAppPage> {
             SizedBox(height: 8),
             Text(
               '• Generate six random numbers for the following Lotto games:\n'
-              '   • Lotto 6/42\n'
-              '   • Mega Lotto 6/45\n'
-              '   • Super Lotto 6/49\n'
-              '   • Grand Lotto 6/55\n'
-              '   • Ultra Lotto 6/58\n'
+              '\t\t\t\t\t• Lotto 6/42\n'
+              '\t\t\t\t\t• Mega Lotto 6/45\n'
+              '\t\t\t\t\t• Super Lotto 6/49\n'
+              '\t\t\t\t\t• Grand Lotto 6/55\n'
+              '\t\t\t\t\t• Ultra Lotto 6/58\n'
               '• Easy to use interface\n'
               '• Quick number generation',
               style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.justify,
             ),
             SizedBox(height: 16),
             Text(
-              'Developed by dewsix9',
-              style: TextStyle(fontSize: 16),
+              'Developed by drewsix9',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
