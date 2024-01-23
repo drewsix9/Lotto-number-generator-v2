@@ -14,9 +14,9 @@ class RandomNumbers {
       }
     }
     int i = 0;
-    uniqueNumbers.forEach((element) {
+    for (var element in uniqueNumbers) {
       numbers[i] = element.toString().padLeft(2, '0');
       i++;
-    });
+    }
   }
 }

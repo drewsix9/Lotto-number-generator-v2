@@ -9,6 +9,8 @@ import '../pages/658.dart';
 import '../pages/about_app_page.dart';
 
 class MyNavBar extends StatelessWidget {
+  const MyNavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(

@@ -4,7 +4,7 @@ Widget buildNumberWidgets(List<String> numbers) {
   return Row(
     children: numbers.map((number) {
       return Container(
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         height: 50,
         width: 50,
         decoration: BoxDecoration(
@@ -17,7 +17,7 @@ Widget buildNumberWidgets(List<String> numbers) {
         child: Center(
           child: Text(
             number,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 30,
               color: Colors.black,
             ),

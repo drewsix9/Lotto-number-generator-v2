@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotto_number_generator/main.dart';
 import '../widgets/myNavDrawer.dart';
 import '../widgets/myAppBar.dart';
 import '../utils/models/generatedNumber.dart';
@@ -18,17 +19,17 @@ class _Page649State extends State<Page649> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar('Lotto 6/49'),
-      drawer: MyNavBar(),
+      drawer: const MyNavBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(20),
-              child: Image.asset('assets/images/649.png', width: 200),
+              padding: const EdgeInsets.all(20),
+              child: Image.asset(lotto.imagePath[2], width: 200),
             ),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -39,8 +40,8 @@ class _Page649State extends State<Page649> {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent,
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.redAccent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),
                 ),
@@ -50,7 +51,7 @@ class _Page649State extends State<Page649> {
                   randomNumbers.generateNumbers(49);
                 });
               },
-              child: Text('Generate Number',
+              child: const Text('Generate Number',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             ),
           ],

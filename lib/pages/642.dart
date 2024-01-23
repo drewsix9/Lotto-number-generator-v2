@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:lotto_number_generator/main.dart';
 import '../utils/models/generatedNumber.dart';
 import '../widgets/myAppBar.dart';
 import '../widgets/myNavDrawer.dart';
@@ -21,41 +22,44 @@ class _Page642State extends State<Page642> {
     return Scaffold(
       appBar: myAppBar('Lotto 6/42'),
       drawer: MyNavBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Image.asset('assets/images/642.png', width: 200),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // create a builder widget for the 6 numbers
-                  buildNumberWidgets(randomNumbers.numbers),
-                ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Image.asset(lotto.imagePath[0], width: 200),
               ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent,
-                onPrimary: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // create a builder widget for the 6 numbers
+                    buildNumberWidgets(randomNumbers.numbers),
+                  ],
                 ),
               ),
-              onPressed: () {
-                setState(() {
-                  randomNumbers.generateNumbers(42);
-                });
-              },
-              child: Text('Generate Number',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-            ),
-          ],
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.redAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    randomNumbers.generateNumbers(42);
+                  });
+                },
+                child: Text('Generate Number',
+                    style:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
         ),
       ),
     );
