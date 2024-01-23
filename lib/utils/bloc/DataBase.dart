@@ -10,7 +10,6 @@ class LottoDataBase extends ChangeNotifier {
 // Methods for testing
   final logger = Logger();
 
-  get lotto642 => null;
   void printEntries() {
     int i = 1;
     logger.i('Entries:');
@@ -47,6 +46,6 @@ class LottoDataBase extends ChangeNotifier {
   }
 
   String joinIndex(int index, List<String> entry) {
-    return index.toString() + ' ' + entry.join(' ');
+    return index.toString() + entry.join(' ');
   }
 }

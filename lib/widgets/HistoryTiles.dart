@@ -1,51 +1,55 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lotto_number_generator/pages/642.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
 import 'package:lotto_number_generator/utils/models/Lotto_class.dart';
 import 'package:provider/provider.dart';
 
 Lotto lotto = Lotto(); // instance of Lotto class
 
-Widget HistoryTilesBuilder(BuildContext context, int index) {
-  return Consumer<LottoDataBase>(
-    builder: (context, value, child) => ListTile(
-      // int i = v
-      leading: Image.asset(
-        'assets/images/642.png',
-        width: 50,
-        height: 50,
+class HistoryTiles extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Access the LottoDataBase instance
+    final lottoDataBase = Provider.of<LottoDataBase>(context);
+
+    List<String> historyEntries = lottoDataBase.entries;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 24),
+      child: ListView.separated(
+        itemCount: historyEntries.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.asset(
+                lotto.imagePath[int.parse(historyEntries[index][0])],
+                height: 48),
+            title: Center(
+                // Wrap the Text widget with a Center widget
+                child: Text(
+              historyEntries[index].substring(1).replaceAll(' ', '-'),
+              style: GoogleFonts.robotoMono(
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )),
+            trailing: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {},
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: 24,
+          ); // Add a Divider widget as a separator
+        },
       ),
-      title: Text(
-        'Lotto 6/42',
-        style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey[700],
-        ),
-      ),
-      subtitle: Text(
-        '${value.lotto642[index].date}',
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey[700],
-        ),
-      ),
-      trailing: Text(
-        '${value.lotto642[index].numbers}',
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey[700],
-        ),
-      ),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Page642()),
-        );
-      },
-    ),
-  );
+    );
+  }
 }

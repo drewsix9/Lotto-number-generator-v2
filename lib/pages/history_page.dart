@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
+import 'package:lotto_number_generator/widgets/HistoryTiles.dart';
 import 'package:lotto_number_generator/widgets/myAppBar.dart';
 import 'package:lotto_number_generator/widgets/myNavDrawer.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,7 @@ class _HistoryPageState extends State<HistoryPage> {
       builder: (context, value, child) => Scaffold(
         appBar: myAppBar('History'),
         drawer: const MyNavBar(),
-        // body: SafeArea(),
+        body: HistoryTiles(),
       ),
     );
   }
