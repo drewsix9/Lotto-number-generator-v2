@@ -18,32 +18,10 @@ class Page642 extends StatefulWidget {
 }
 
 RandomNumbers randomNumbers = RandomNumbers();
-final _lottobox = Hive.box('lottobox');
 List<String> tempRandNum = List.filled(6, '00');
 
 class _Page642State extends State<Page642> {
-  LottoDataBase? lottoDataBase;
-
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Now you can access your provider here
-    lottoDataBase = Provider.of<LottoDataBase>(context);
-  }
-
-  void initState() {
-    super.initState();
-
-    // if the box is empty, create initial data
-    if (_lottobox.get('HISTORY') == null) {
-      lottoDataBase?.createInitialData();
-    } else {
-      // else load the data
-      lottoDataBase?.loadData();
-    }
-  }
-
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(

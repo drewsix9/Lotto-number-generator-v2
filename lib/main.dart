@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:logger/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lotto_number_generator/pages/642.dart';
@@ -31,6 +31,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _lottobox = Hive.box('lottobox');
+  final logger = Logger();
+
+  LottoDataBase? lottoDataBase;
+
+  @override
+  void initState() {
+    super.initState();
+
+    lottoDataBase = LottoDataBase();
+
+    // Check if the box is open
+    if (Hive.isBoxOpen('lottobox')) {
+      logger.i('The box is open');
+      // if the box is empty, create initial data
+      if (_lottobox.get('HISTORY') == null) {
+        lottoDataBase?.createInitialData();
+      } else {
+        // else load the data
+        lottoDataBase?.loadData();
+      }
+    } else {
+      logger.i('The box is not open');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
