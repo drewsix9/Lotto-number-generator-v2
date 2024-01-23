@@ -19,6 +19,7 @@ class Page642 extends StatefulWidget {
 
 RandomNumbers randomNumbers = RandomNumbers();
 final _lottobox = Hive.box('lottobox');
+List<String> tempRandNum = List.filled(6, '00');
 
 class _Page642State extends State<Page642> {
   LottoDataBase? lottoDataBase;
@@ -66,7 +67,7 @@ class _Page642State extends State<Page642> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // create a builder widget for the 6 numbers
-                      buildNumberWidgets(randomNumbers.numbers),
+                      buildNumberWidgets(tempRandNum),
                     ],
                   ),
                 ),
@@ -82,8 +83,8 @@ class _Page642State extends State<Page642> {
                   ),
                   onPressed: () {
                     setState(() {
-                      randomNumbers.generateNumbers(42);
-                      value.addEntry(randomNumbers.numbers);
+                      tempRandNum = randomNumbers.generateNumbers(42);
+                      value.addEntry(tempRandNum);
                       value.updateData();
                     });
                   },

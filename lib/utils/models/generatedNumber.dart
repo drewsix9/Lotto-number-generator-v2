@@ -2,10 +2,22 @@
 import 'dart:math';
 
 class RandomNumbers {
-  //allocate 6 array of strings and initialize to '00'
-  List<String> numbers = List.filled(6, '00');
+  // void generateNumbers(int choice) {
+  //   Set<int> uniqueNumbers = {};
+  //   while (uniqueNumbers.length < 6) {
+  //     int randomNumber = Random().nextInt(choice + 1);
+  //     if (!uniqueNumbers.contains(randomNumber)) {
+  //       uniqueNumbers.add(randomNumber);
+  //     }
+  //   }
+  //   int i = 0;
+  //   for (var element in uniqueNumbers) {
+  //     numbers[i] = element.toString().padLeft(2, '0');
+  //     i++;
+  //   }
+  // }
 
-  void generateNumbers(int choice) {
+  List<String> generateNumbers(int choice) {
     Set<int> uniqueNumbers = {};
     while (uniqueNumbers.length < 6) {
       int randomNumber = Random().nextInt(choice + 1);
@@ -13,10 +25,6 @@ class RandomNumbers {
         uniqueNumbers.add(randomNumber);
       }
     }
-    int i = 0;
-    for (var element in uniqueNumbers) {
-      numbers[i] = element.toString().padLeft(2, '0');
-      i++;
-    }
+    return uniqueNumbers.map((e) => e.toString().padLeft(2, '0')).toList();
   }
 }

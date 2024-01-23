@@ -15,6 +15,7 @@ class Page649 extends StatefulWidget {
 }
 
 RandomNumbers randomNumbers = RandomNumbers();
+List<String> tempRandNum = List.filled(6, '00');
 
 class _Page649State extends State<Page649> {
   @override
@@ -41,7 +42,7 @@ class _Page649State extends State<Page649> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // create a builder widget for the 6 numbers
-                      buildNumberWidgets(randomNumbers.numbers),
+                      buildNumberWidgets(tempRandNum),
                     ],
                   ),
                 ),
@@ -57,8 +58,8 @@ class _Page649State extends State<Page649> {
                   ),
                   onPressed: () {
                     setState(() {
-                      randomNumbers.generateNumbers(49);
-                      value.addEntry(randomNumbers.numbers);
+                      tempRandNum = randomNumbers.generateNumbers(49);
+                      value.addEntry(tempRandNum);
                       value.updateData();
                     });
                   },
