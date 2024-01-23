@@ -1,14 +1,19 @@
+import 'package:logger/logger.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class LottoDataBase {
+class LottoDataBase extends ChangeNotifier {
   List<List<String>> entries = [];
 
   final _lottobox = Hive.box('lottobox');
 
-  // Methods for testing
+// Methods for testing
+  final logger = Logger();
   void printEntries() {
+    int i = 1;
+    logger.i('Entries:');
     for (var entry in entries) {
-      print(entry);
+      logger.i('${i++}:) $entry');
     }
   }
 
