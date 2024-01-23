@@ -59,7 +59,8 @@ class _Page649State extends State<Page649> {
                   onPressed: () {
                     setState(() {
                       tempRandNum = randomNumbers.generateNumbers(49);
-                      value.addEntry(tempRandNum);
+                      String temp = value.joinIndex(2, tempRandNum);
+                      value.addEntry(temp);
                       value.updateData();
                     });
                   },

@@ -3,12 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class LottoDataBase extends ChangeNotifier {
-  List<List<String>> entries = [];
+  List<String> entries = [];
 
   final _lottobox = Hive.box('lottobox');
 
 // Methods for testing
   final logger = Logger();
+
+  get lotto642 => null;
   void printEntries() {
     int i = 1;
     logger.i('Entries:');
@@ -18,7 +20,7 @@ class LottoDataBase extends ChangeNotifier {
   }
 
   // Methods for the app
-  void addEntry(List<String> entry) {
+  void addEntry(String entry) {
     entries.add(entry);
     printEntries();
   }
@@ -42,5 +44,9 @@ class LottoDataBase extends ChangeNotifier {
 
   void loadData() {
     entries = _lottobox.get('HISTORY');
+  }
+
+  String joinIndex(int index, List<String> entry) {
+    return index.toString() + ' ' + entry.join(' ');
   }
 }
