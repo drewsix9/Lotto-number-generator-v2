@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:lotto_number_generator/main.dart';
 import '../utils/models/generatedNumber.dart';
 import '../widgets/myAppBar.dart';
@@ -15,9 +16,21 @@ class Page642 extends StatefulWidget {
 }
 
 RandomNumbers randomNumbers = RandomNumbers();
+final _lottobox = Hive.box('lottobox');
 
 class _Page642State extends State<Page642> {
   @override
+  void initState() {
+    // if the box is empty, create initial data
+    if (_lottobox.get('HISTORY') == null) {
+      lottoDataBase.createInitialData();
+    } else {
+      // else load the data
+      lottoDataBase.loadData();
+    }
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppBar('Lotto 6/42'),
@@ -57,6 +70,8 @@ class _Page642State extends State<Page642> {
                 onPressed: () {
                   setState(() {
                     randomNumbers.generateNumbers(42);
+                    lottoDataBase.entries.add(randomNumbers.numbers);
+                    lottoDataBase.updateData();
                   });
                 },
                 child: Text('Generate Number',

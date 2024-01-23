@@ -55,6 +55,8 @@ class _Page645State extends State<Page645> {
                 onPressed: () {
                   setState(() {
                     randomNumbers.generateNumbers(45);
+                    lottoDataBase.entries.add(randomNumbers.numbers);
+                    lottoDataBase.updateData();
                   });
                 },
                 child: const Text('Generate Number',
