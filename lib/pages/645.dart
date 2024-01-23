@@ -25,10 +25,13 @@ class _Page645State extends State<Page645> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // lotto image
               Container(
                 padding: const EdgeInsets.all(20),
                 child: Image.asset(lotto.imagePath[1], width: 200),
               ),
+
+              // create a builder widget for the 6 numbers
               Container(
                 padding: const EdgeInsets.all(20),
                 child: Row(
@@ -39,6 +42,8 @@ class _Page645State extends State<Page645> {
                   ],
                 ),
               ),
+
+              // generate button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,

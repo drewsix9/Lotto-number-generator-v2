@@ -20,41 +20,49 @@ class _Page655State extends State<Page655> {
     return Scaffold(
       appBar: myAppBar('Lotto 6/55'),
       drawer: const MyNavBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Image.asset(lotto.imagePath[3], width: 200),
-            ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // create a builder widget for the 6 numbers
-                  buildNumberWidgets(randomNumbers.numbers),
-                ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // lotto image
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Image.asset(lotto.imagePath[3], width: 200),
               ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.redAccent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0),
+
+              // create a builder widget for the 6 numbers
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // create a builder widget for the 6 numbers
+                    buildNumberWidgets(randomNumbers.numbers),
+                  ],
                 ),
               ),
-              onPressed: () {
-                setState(() {
-                  randomNumbers.generateNumbers(55);
-                });
-              },
-              child: const Text('Generate Number',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-            ),
-          ],
+
+              // generate button
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.redAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    randomNumbers.generateNumbers(55);
+                  });
+                },
+                child: const Text('Generate Number',
+                    style:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
         ),
       ),
     );
