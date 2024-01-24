@@ -1,3 +1,4 @@
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
@@ -15,11 +16,22 @@ class HistoryTiles extends StatelessWidget {
       itemCount: Provider.of<LottoDataBase>(context).entries.length,
       itemBuilder: (context, index) {
         return Consumer<LottoDataBase>(
-          builder: (context, value, child) => GestureDetector(
-            onLongPress: () {
-              // show dialog for confirmation
-              showDeleteDialog(context, value, index);
-            },
+          builder: (context, value, child) => Slidable(
+            endActionPane: ActionPane(
+              motion: const BehindMotion(),
+              children: [
+                // delete button
+                SlidableAction(
+                  onPressed: (context) {
+                    showDeleteDialog(context, value, index);
+                  },
+                  backgroundColor: Colors.red,
+                  icon: Icons.delete,
+                  foregroundColor: Colors.white,
+                  label: 'Delete',
+                ),
+              ],
+            ),
             child: ListTile(
               leading: Image.asset(
                   lotto.imagePath[int.parse(value.entries[index][0])],
