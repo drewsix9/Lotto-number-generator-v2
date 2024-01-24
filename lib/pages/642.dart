@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:lotto_number_generator/main.dart';
@@ -26,7 +24,7 @@ class _Page642State extends State<Page642> {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
         appBar: myAppBar('Lotto 6/42'),
-        drawer: MyNavBar(),
+        drawer: const MyNavBar(),
         body: SafeArea(
           child: Center(
             child: Column(
@@ -34,13 +32,13 @@ class _Page642State extends State<Page642> {
               children: [
                 // lotto image
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Image.asset(lotto.imagePath[0], width: 200),
                 ),
 
                 // create a builder widget for the 6 numbers
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -67,7 +65,7 @@ class _Page642State extends State<Page642> {
                       value.updateData();
                     });
                   },
-                  child: Text('Generate Number',
+                  child: const Text('Generate Number',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
 import 'package:lotto_number_generator/widgets/HistoryTiles.dart';
@@ -18,10 +17,69 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
-        appBar: myAppBar('History'),
+        appBar: myAppBar(
+          'History',
+          action: IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              if (value.entries.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  // show snackbar
+                  const SnackBar(
+                    content: Text('History is empty'),
+                  ),
+                );
+              } else {
+                // show delete dialog
+                showDeleteDialog(context);
+              }
+            },
+          ),
+        ),
         drawer: const MyNavBar(),
-        body: HistoryTiles(),
+        body: const HistoryTiles(),
       ),
+    );
+  }
+
+  Future<dynamic> showDeleteDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Delete all entries?'),
+          actions: [
+            // text button to cancel
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+
+            // text button to delete all entries
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                context.read<LottoDataBase>().clearEntries();
+
+                // rebuild HistoryTiles widget using the provider
+                setState(() {
+                  context.read<LottoDataBase>().loadData();
+                });
+
+                // show snackbar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('History cleared'),
+                  ),
+                );
+              },
+              child: const Text('Delete'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,8 +1,14 @@
 import 'package:logger/logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
 
-class LottoDataBase extends ChangeNotifier {
+class LottoDataBase extends ChangeNotifier implements ReassembleHandler {
+  @override
+  void reassemble() {
+    print('Did hot-reload');
+  }
+
   List<String> entries = [];
 
   final _lottobox = Hive.box('lottobox');
@@ -26,6 +32,7 @@ class LottoDataBase extends ChangeNotifier {
 
   void removeEntry(int index) {
     entries.removeAt(index);
+    notifyListeners();
   }
 
   void clearEntries() {

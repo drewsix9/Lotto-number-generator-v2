@@ -1,8 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
 import 'package:lotto_number_generator/utils/models/Lotto_class.dart';
 import 'package:provider/provider.dart';
@@ -10,46 +7,70 @@ import 'package:provider/provider.dart';
 Lotto lotto = Lotto(); // instance of Lotto class
 
 class HistoryTiles extends StatelessWidget {
+  const HistoryTiles({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // Access the LottoDataBase instance
-    final lottoDataBase = Provider.of<LottoDataBase>(context);
-
-    List<String> historyEntries = lottoDataBase.entries;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 24),
-      child: ListView.separated(
-        itemCount: historyEntries.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.asset(
-                lotto.imagePath[int.parse(historyEntries[index][0])],
-                height: 48),
-            title: Center(
-                // Wrap the Text widget with a Center widget
+    return ListView.separated(
+      itemCount: Provider.of<LottoDataBase>(context).entries.length,
+      itemBuilder: (context, index) {
+        return Consumer<LottoDataBase>(
+          builder: (context, value, child) => GestureDetector(
+            onLongPress: () {
+              // show dialog for confirmation
+              showDeleteDialog(context, value, index);
+            },
+            child: ListTile(
+              leading: Image.asset(
+                  lotto.imagePath[int.parse(value.entries[index][0])],
+                  height: 48),
+              title: Center(
                 child: Text(
-              historyEntries[index].substring(1).replaceAll(' ', '-'),
-              style: GoogleFonts.robotoMono(
-                textStyle: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
+                  value.entries[index].substring(1).replaceAll(' ', '-'),
+                  style: GoogleFonts.robotoMono(
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
-            )),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {},
             ),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider(
-            height: 24,
-          ); // Add a Divider widget as a separator
-        },
-      ),
+          ),
+        );
+      },
+      separatorBuilder: (context, index) => const Divider(),
+    );
+  }
+
+  void showDeleteDialog(BuildContext context, LottoDataBase value, int index) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Delete this entry?'),
+          actions: [
+            // text button to cancel
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+
+            // text button to delete the entry
+            TextButton(
+              onPressed: () {
+                // delete the entry
+                value.removeEntry(index);
+                Navigator.pop(context);
+              },
+              child: const Text('Delete'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
