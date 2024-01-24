@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
-import 'package:lotto_number_generator/widgets/HistoryTiles.dart';
 import 'package:lotto_number_generator/widgets/myAppBar.dart';
+import 'package:lotto_number_generator/widgets/myHistoryTiles.dart';
 import 'package:lotto_number_generator/widgets/myNavDrawer.dart';
 import 'package:provider/provider.dart';
+
+import '../utils/models/Lotto_class.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -11,6 +13,8 @@ class HistoryPage extends StatefulWidget {
   @override
   State<HistoryPage> createState() => _HistoryPageState();
 }
+
+Lotto lotto = Lotto(); // instance of Lotto class
 
 class _HistoryPageState extends State<HistoryPage> {
   @override
@@ -37,7 +41,18 @@ class _HistoryPageState extends State<HistoryPage> {
           ),
         ),
         drawer: const MyNavBar(),
-        body: const HistoryTiles(),
+        body: Consumer<LottoDataBase>(
+          builder: (context, value, child) => ListView.builder(
+            itemCount: value.entries.length,
+            itemBuilder: (context, index) {
+              return MyHistoryTiles(
+                imagePath: lotto.imagePath[int.parse(value.entries[index][0])],
+                data: value.entries[index].substring(1).replaceAll(' ', '-'),
+                index: index,
+              );
+            },
+          ),
+        ),
       ),
     );
   }
