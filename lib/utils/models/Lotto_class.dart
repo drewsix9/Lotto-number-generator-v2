@@ -14,4 +14,20 @@ class Lotto {
     'Lotto 6/55',
     'Lotto 6/58',
   ];
+
+  final List<String> gameDescription = [
+    '6/42',
+    '6/45',
+    '6/49',
+    '6/55',
+    '6/58',
+  ];
+
+  final List<int> gameMaxNumber = [
+    42,
+    45,
+    49,
+    55,
+    58,
+  ];
 }

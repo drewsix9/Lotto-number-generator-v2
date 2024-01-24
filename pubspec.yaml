@@ -35,7 +35,11 @@ flutter_icons:
 dependencies:
   flutter:
     sdk: flutter
-
+  hive:
+  hive_flutter:  
+  provider: ^6.1.1
+  google_fonts:
+  flutter_slidable:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -45,6 +49,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.9.2"
+  hive_generator:
+  logger: ^1.1.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

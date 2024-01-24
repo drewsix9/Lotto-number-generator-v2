@@ -7,6 +7,8 @@ Widget buildNumberWidgets(List<String> numbers) {
         margin: const EdgeInsets.all(5),
         height: 50,
         width: 50,
+
+        // decoration for the container
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.grey,
@@ -14,6 +16,8 @@ Widget buildNumberWidgets(List<String> numbers) {
           ),
           borderRadius: BorderRadius.circular(10),
         ),
+
+        // the number inside the container
         child: Center(
           child: Text(
             number,
