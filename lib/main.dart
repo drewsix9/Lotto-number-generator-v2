@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home: Page642(),
       ),
-      designSize: const Size(415, 923),
+      designSize: const Size(412, 915),
     );
   }
 }

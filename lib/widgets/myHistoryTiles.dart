@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
@@ -18,14 +19,14 @@ class MyHistoryTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Padding(
-        padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
+        padding: EdgeInsets.only(top: 24.h, left: 24.w, right: 24.w),
         child: Slidable(
           endActionPane: ActionPane(
             motion: const BehindMotion(),
             children: [
               // delete button
               SlidableAction(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
                 onPressed: (context) {
                   showDeleteDialog(context, value);
                 },
@@ -37,23 +38,23 @@ class MyHistoryTiles extends StatelessWidget {
             ],
           ),
           child: Container(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
             decoration: BoxDecoration(
               color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
                   imagePath,
-                  height: 48,
+                  height: 48.h,
                 ),
                 Text(
                   data.substring(0).replaceAll(' ', '-'),
                   style: GoogleFonts.robotoMono(
-                    textStyle: const TextStyle(
-                      fontSize: 18,
+                    textStyle: TextStyle(
+                      fontSize: 18.sp,
                       color: Colors.black87,
                       fontWeight: FontWeight.w500,
                     ),

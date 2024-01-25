@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lotto_number_generator/main.dart';
 import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,7 @@ class _Page658State extends State<Page658> {
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
-        appBar: myAppBar('Lotto 6/58'),
+        appBar: myAppBar(lotto.gameName[4]),
         drawer: const MyNavBar(),
         body: SafeArea(
           child: Center(
@@ -31,13 +32,15 @@ class _Page658State extends State<Page658> {
               children: [
                 // lotto image
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Image.asset(lotto.imagePath[4], width: 200),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                  child: Image.asset(lotto.imagePath[4], width: 200.w),
                 ),
 
                 // create a builder widget for the 6 numbers
                 Container(
-                  padding: const EdgeInsets.all(20),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -53,7 +56,7 @@ class _Page658State extends State<Page658> {
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.redAccent,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
+                      borderRadius: BorderRadius.circular(32.0.r),
                     ),
                   ),
                   onPressed: () {
@@ -64,9 +67,9 @@ class _Page658State extends State<Page658> {
                       value.updateData();
                     });
                   },
-                  child: const Text('Generate Number',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  child: Text('Generate Number',
+                      style: TextStyle(
+                          fontSize: 15.sp, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
