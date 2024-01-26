@@ -6,7 +6,7 @@ class RandomNumbers {
     Set<int> uniqueNumbers = {};
     while (uniqueNumbers.length < 6) {
       int randomNumber = Random().nextInt(choice + 1);
-      if (!uniqueNumbers.contains(randomNumber)) {
+      if (!uniqueNumbers.contains(randomNumber) && randomNumber != 0) {
         uniqueNumbers.add(randomNumber);
       }
     }

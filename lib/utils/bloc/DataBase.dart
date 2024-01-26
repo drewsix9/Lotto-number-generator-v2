@@ -9,7 +9,7 @@ class LottoDataBase extends ChangeNotifier implements ReassembleHandler {
     print('Did hot-reload');
   }
 
-  List<String> entries = [];
+  List<dynamic> entries = [];
 
   final _lottobox = Hive.box('lottobox');
 

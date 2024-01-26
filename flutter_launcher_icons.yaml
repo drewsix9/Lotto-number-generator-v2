@@ -1,0 +1,3 @@
+flutter_launcher_icons:
+  image_path_android: "assets/icons/android/play_store_512.png"
+  android: true
