@@ -15,6 +15,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 250, 249, 246),
       drawer: MyNavBar(),
       appBar: myAppBar(''),
       body: Padding(

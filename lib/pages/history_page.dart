@@ -21,6 +21,7 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
+        backgroundColor: Color.fromARGB(255, 250, 249, 246),
         appBar: myAppBar(
           'History',
           action: IconButton(

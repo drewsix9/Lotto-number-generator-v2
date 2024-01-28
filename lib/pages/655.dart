@@ -23,6 +23,7 @@ class _Page655State extends State<Page655> {
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
+        backgroundColor: Color.fromARGB(255, 250, 249, 246),
         appBar: myAppBar(lotto.gameName[3]),
         drawer: const MyNavBar(),
         body: SafeArea(

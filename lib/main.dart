@@ -55,9 +55,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: (context, child) => const MaterialApp(
+      builder: (context, child) => MaterialApp(
+        theme: ThemeData(
+          colorScheme: const ColorScheme.light(
+            background: Color.fromARGB(255, 250, 249, 246),
+          ),
+        ),
         debugShowCheckedModeBanner: false,
-        home: Page642(),
+        home: const Page642(),
       ),
       designSize: const Size(412, 915),
     );
