@@ -36,7 +36,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 );
               } else {
                 // show delete dialog
-                showDeleteDialog(context);
+                showDeleteAllDialog(context);
               }
             },
           ),
@@ -58,7 +58,7 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Future<dynamic> showDeleteDialog(BuildContext context) {
+  Future<dynamic> showDeleteAllDialog(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) {
@@ -80,9 +80,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 context.read<LottoDataBase>().clearEntries();
 
                 // rebuild HistoryTiles widget using the provider
-                setState(() {
-                  context.read<LottoDataBase>().loadData();
-                });
+                context.read<LottoDataBase>().loadData();
 
                 // show snackbar
                 ScaffoldMessenger.of(context).showSnackBar(

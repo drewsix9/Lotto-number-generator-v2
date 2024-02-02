@@ -65,7 +65,6 @@ class _Page658State extends State<Page658> {
                       tempRandNum = randomNumbers.generateNumbers(58);
                       String temp = value.joinIndex(4, tempRandNum);
                       value.addEntry(temp);
-                      value.updateData();
                     });
                   },
                   child: Text('Generate Number',

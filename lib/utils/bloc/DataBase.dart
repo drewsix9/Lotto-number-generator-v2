@@ -27,16 +27,21 @@ class LottoDataBase extends ChangeNotifier implements ReassembleHandler {
   // Methods for the app
   void addEntry(String entry) {
     entries.add(entry);
+    updateData();
     printEntries();
+    notifyListeners();
   }
 
   void removeEntry(int index) {
     entries.removeAt(index);
+    updateData();
     notifyListeners();
   }
 
   void clearEntries() {
     entries.clear();
+    updateData();
+    notifyListeners();
   }
 
   // Methods for Hive
