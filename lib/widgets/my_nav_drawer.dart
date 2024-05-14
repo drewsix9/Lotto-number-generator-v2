@@ -3,11 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lotto_number_generator/pages/history_page.dart';
-import '../pages/642.dart';
-import '../pages/645.dart';
-import '../pages/649.dart';
-import '../pages/655.dart';
-import '../pages/658.dart';
+import 'package:lotto_number_generator/pages/lotto_page_builder.dart';
+import 'package:lotto_number_generator/utils/models/lotto_assets.dart';
+
 import '../pages/about_app_page.dart';
 
 class MyNavBar extends StatelessWidget {
@@ -37,7 +35,13 @@ class MyNavBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page642()),
+              MaterialPageRoute(
+                  builder: (context) => LottoPageBuilder(
+                        gameImagePath: gameImagePath[0],
+                        gameName: gameName[0],
+                        gameDescription: gameDescription[0],
+                        gameMaxNumber: gameMaxNumber[0],
+                      )),
             );
           },
         ),
@@ -61,7 +65,13 @@ class MyNavBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page645()),
+              MaterialPageRoute(
+                  builder: (context) => LottoPageBuilder(
+                        gameImagePath: gameImagePath[1],
+                        gameName: gameName[1],
+                        gameDescription: gameDescription[1],
+                        gameMaxNumber: gameMaxNumber[1],
+                      )),
             );
           },
         ),
@@ -85,7 +95,13 @@ class MyNavBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page649()),
+              MaterialPageRoute(
+                  builder: (context) => LottoPageBuilder(
+                        gameImagePath: gameImagePath[2],
+                        gameName: gameName[2],
+                        gameDescription: gameDescription[2],
+                        gameMaxNumber: gameMaxNumber[2],
+                      )),
             );
           },
         ),
@@ -109,7 +125,13 @@ class MyNavBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page655()),
+              MaterialPageRoute(
+                  builder: (context) => LottoPageBuilder(
+                        gameImagePath: gameImagePath[3],
+                        gameName: gameName[3],
+                        gameDescription: gameDescription[3],
+                        gameMaxNumber: gameMaxNumber[3],
+                      )),
             );
           },
         ),
@@ -133,7 +155,13 @@ class MyNavBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Page658()),
+              MaterialPageRoute(
+                  builder: (context) => LottoPageBuilder(
+                        gameImagePath: gameImagePath[4],
+                        gameName: gameName[4],
+                        gameDescription: gameDescription[4],
+                        gameMaxNumber: gameMaxNumber[4],
+                      )),
             );
           },
         ),

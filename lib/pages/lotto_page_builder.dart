@@ -1,30 +1,47 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lotto_number_generator/main.dart';
-import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
+import 'package:lotto_number_generator/utils/bloc/lotto_database.dart';
 import 'package:provider/provider.dart';
-import '../utils/models/generatedNumber.dart';
-import '../widgets/myAppBar.dart';
-import '../widgets/myNavDrawer.dart';
-import '../widgets/myNumbersBuilder.dart';
 
-class Page645 extends StatefulWidget {
-  const Page645({super.key});
+import '../utils/models/generated_number.dart';
+import '../widgets/my_app_bar.dart';
+import '../widgets/my_nav_drawer.dart';
+import '../widgets/my_numbers_builder.dart';
+
+class LottoPageBuilder extends StatefulWidget {
+  final String gameImagePath;
+  final String gameName;
+  final String gameDescription;
+  final int gameMaxNumber;
+  const LottoPageBuilder({
+    super.key,
+    required this.gameImagePath,
+    required this.gameName,
+    required this.gameDescription,
+    required this.gameMaxNumber,
+  });
 
   @override
-  State<Page645> createState() => _Page645State();
+  State<LottoPageBuilder> createState() => _LottoPageBuilderState();
 }
 
 RandomNumbers randomNumbers = RandomNumbers();
 List<String> tempRandNum = List.filled(6, '00');
 
-class _Page645State extends State<Page645> {
+class _LottoPageBuilderState extends State<LottoPageBuilder> {
+  get gameImagePath => widget.gameImagePath;
+  get gameName => widget.gameName;
+  get gameDescription => widget.gameDescription;
+  get gameMaxNumber => widget.gameMaxNumber;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
-        backgroundColor: Color.fromARGB(255, 250, 249, 246),
-        appBar: myAppBar(lotto.gameName[1]),
+        backgroundColor: const Color.fromARGB(255, 250, 249, 246),
+        appBar: myAppBar(gameName),
         drawer: const MyNavBar(),
         body: SafeArea(
           child: Center(
@@ -35,7 +52,7 @@ class _Page645State extends State<Page645> {
                 Container(
                   padding:
                       EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
-                  child: Image.asset(lotto.imagePath[1], width: 200.w),
+                  child: Image.asset(gameImagePath, width: 200.w),
                 ),
 
                 // create a builder widget for the 6 numbers
@@ -61,8 +78,8 @@ class _Page645State extends State<Page645> {
                     ),
                   ),
                   onPressed: () {
-                    tempRandNum = randomNumbers.generateNumbers(45);
-                    String temp = value.joinIndex(1, tempRandNum);
+                    tempRandNum = randomNumbers.generateNumbers(42);
+                    String temp = value.joinIndex(0, tempRandNum);
                     value.addEntry(temp);
                   },
                   child: Text('Generate Number',

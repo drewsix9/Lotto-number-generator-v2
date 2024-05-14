@@ -1,15 +1,15 @@
-import 'package:logger/logger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
 class LottoDataBase extends ChangeNotifier implements ReassembleHandler {
+  List<dynamic> entries = [];
+  
   @override
   void reassemble() {
-    print('Did hot-reload');
+    debugPrint('Did hot-reload');
   }
-
-  List<dynamic> entries = [];
 
   final _lottobox = Hive.box('lottobox');
 

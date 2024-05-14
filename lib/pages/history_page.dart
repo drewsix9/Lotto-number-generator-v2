@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
-import 'package:lotto_number_generator/widgets/myAppBar.dart';
-import 'package:lotto_number_generator/widgets/myHistoryTiles.dart';
-import 'package:lotto_number_generator/widgets/myNavDrawer.dart';
+import 'package:lotto_number_generator/utils/bloc/lotto_database.dart';
+import 'package:lotto_number_generator/utils/models/lotto_assets.dart';
+import 'package:lotto_number_generator/widgets/my_app_bar.dart';
+import 'package:lotto_number_generator/widgets/my_history_tiles.dart';
+import 'package:lotto_number_generator/widgets/my_nav_drawer.dart';
 import 'package:provider/provider.dart';
-
-import '../utils/models/Lotto_class.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -14,14 +13,12 @@ class HistoryPage extends StatefulWidget {
   State<HistoryPage> createState() => _HistoryPageState();
 }
 
-Lotto lotto = Lotto(); // instance of Lotto class
-
 class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<LottoDataBase>(
       builder: (context, value, child) => Scaffold(
-        backgroundColor: Color.fromARGB(255, 250, 249, 246),
+        backgroundColor: const Color.fromARGB(255, 250, 249, 246),
         appBar: myAppBar(
           'History',
           action: IconButton(
@@ -47,7 +44,7 @@ class _HistoryPageState extends State<HistoryPage> {
             itemCount: value.entries.length,
             itemBuilder: (context, index) {
               return MyHistoryTiles(
-                imagePath: lotto.imagePath[int.parse(value.entries[index][0])],
+                imagePath: gameImagePath[int.parse(value.entries[index][0])],
                 data: value.entries[index].substring(1).replaceAll(' ', '-'),
                 index: index,
               );

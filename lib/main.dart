@@ -1,10 +1,10 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:logger/logger.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:lotto_number_generator/pages/642.dart';
-import 'package:lotto_number_generator/utils/bloc/DataBase.dart';
-import 'package:lotto_number_generator/utils/models/Lotto_class.dart';
+import 'package:logger/logger.dart';
+import 'package:lotto_number_generator/pages/lotto_page_builder.dart';
+import 'package:lotto_number_generator/utils/bloc/lotto_database.dart';
+import 'package:lotto_number_generator/utils/models/lotto_assets.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -20,8 +20,6 @@ void main() async {
     child: const MyApp(),
   ));
 }
-
-Lotto lotto = Lotto(); // instance of Lotto class
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -56,14 +54,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
-        theme: ThemeData(
-          colorScheme: const ColorScheme.light(
-            background: Color.fromARGB(255, 250, 249, 246),
+          theme: ThemeData(
+            colorScheme: const ColorScheme.light(
+              background: Color.fromARGB(255, 250, 249, 246),
+            ),
           ),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const Page642(),
-      ),
+          debugShowCheckedModeBanner: false,
+          home: LottoPageBuilder(
+            gameImagePath: gameImagePath[0],
+            gameName: gameName[0],
+            gameDescription: gameDescription[0],
+            gameMaxNumber: gameMaxNumber[0],
+          )),
       designSize: const Size(412, 915),
     );
   }

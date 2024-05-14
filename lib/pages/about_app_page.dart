@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../widgets/myAppBar.dart';
-import '../widgets/myNavDrawer.dart';
+
+import '../widgets/my_app_bar.dart';
+import '../widgets/my_nav_drawer.dart';
 
 class AboutAppPage extends StatefulWidget {
   const AboutAppPage({super.key});
